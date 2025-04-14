@@ -1,106 +1,91 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <title>三年級國語小測驗</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="zh-Hant"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;三年級國語小測驗&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: "Microsoft JhengHei", sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #f0f8ff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #2c3e50;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.question {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 5px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.correct {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: green;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.incorrect {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: red;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;三年級國語小測驗&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="question" id="q1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;1. 「小明每天____學校上學。」&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q1" value="a"&gt; a. 跑步&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q1" value="b"&gt; b. 坐船&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q1" value="c"&gt; c. 飛機&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="checkAnswer('q1', 'a')"&gt;提交&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="result-q1"&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="question" id="q2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;2. 「我喜歡閱讀____的書。」&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q2" value="a"&gt; a. 有趣&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q2" value="b"&gt; b. 難過&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="radio" name="q2" value="c"&gt; c. 不見&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="checkAnswer('q2', 'a')"&gt;提交&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p id="result-q2"&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function checkAnswer(questionId, correctAnswer) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const radios = document.getElementsByName(questionId);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>let selected = null;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>for (const radio of radios) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (radio.checked) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>selected = radio.value;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>break;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const result = document.getElementById(`result-${questionId}`);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (!selected) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.textContent = "請選擇一個答案。";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.className = "incorrect";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else if (selected === correctAnswer) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.textContent = "答對了！👍";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.className = "correct";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.textContent = "答錯了，再試試看～";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>result.className = "incorrect";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <h1>三年級國語小測驗</h1>
+
+  <div class="question" id="q1">
+    <p>1. 「小明每天____學校上學。」</p>
+    <input type="radio" name="q1" value="a"> a. 跑步<br>
+    <input type="radio" name="q1" value="b"> b. 坐船<br>
+    <input type="radio" name="q1" value="c"> c. 飛機<br>
+    <br>
+    <button onclick="checkAnswer('q1', 'a')">提交</button>
+    <p id="result-q1"></p>
+  </div>
+
+  <div class="question" id="q2">
+    <p>2. 「我喜歡閱讀____的書。」</p>
+    <input type="radio" name="q2" value="a"> a. 有趣<br>
+    <input type="radio" name="q2" value="b"> b. 難過<br>
+    <input type="radio" name="q2" value="c"> c. 不見<br>
+    <br>
+    <button onclick="checkAnswer('q2', 'a')">提交</button>
+    <p id="result-q2"></p>
+  </div>
+
+  <script>
+    function checkAnswer(questionId, correctAnswer) {
+      const radios = document.getElementsByName(questionId);
+      let selected = null;
+      for (const radio of radios) {
+        if (radio.checked) {
+          selected = radio.value;
+          break;
+        }
+      }
+
+      const result = document.getElementById(`result-${questionId}`);
+      if (!selected) {
+        result.textContent = "請選擇一個答案。";
+        result.className = "incorrect";
+      } else if (selected === correctAnswer) {
+        result.textContent = "答對了！👍";
+        result.className = "correct";
+      } else {
+        result.textContent = "答錯了，再試試看～";
+        result.className = "incorrect";
+      }
+    }
+  </script>
 </body>
 </html>
+
