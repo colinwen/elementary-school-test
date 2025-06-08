@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>三年級下學期 數學互動測驗（康軒第5～9課）</title>
+  <title>康軒三年級下學期 數學期末互動測驗（第5～9課）</title>
   <style>
     body {
       font-family: "Microsoft JhengHei", sans-serif;
@@ -12,139 +12,128 @@
     h1 {
       color: #2c3e50;
     }
-    .section {
-      margin-bottom: 40px;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
     .question {
       margin-bottom: 20px;
       padding: 15px;
-      background: #f9f9f9;
+      background: #ffffff;
       border-left: 5px solid #3498db;
       border-radius: 5px;
     }
     button {
-      margin-top: 10px;
-      padding: 8px 16px;
+      margin-top: 20px;
+      padding: 10px 20px;
       background-color: #3498db;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    .correct {
-      color: green;
+    .result {
       font-weight: bold;
+      margin-top: 10px;
     }
-    .incorrect {
-      color: red;
+    #score {
+      font-size: 18px;
       font-weight: bold;
+      color: #2c3e50;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>康軒三年級下學期 數學互動測驗（第5～9課）</h1>
+  <h1>康軒三年級下學期 數學期末互動測驗（第5～9課）</h1>
 
-  <div id="quiz-container"></div>
+  <form id="quiz-form"></form>
+  <button onclick="gradeQuiz()">提交測驗並計算分數</button>
+  <p id="score"></p>
 
   <script>
     const questions = [
-      { q: "小數0.5等於1/2。", type: "tf", answer: "true" },
-      { q: "0.8比0.6小。", type: "tf", answer: "false" },
-      { q: "圓的半徑乘以2是直徑。", type: "tf", answer: "true" },
-      { q: "圓周是直線的一部分。", type: "tf", answer: "false" },
-      { q: "8除以2等於？", type: "mc", options: ["2", "4"], answer: "4" },
+      { q: "0.9 加上 0.1 等於多少？", type: "mc", options: ["1", "0.10"], answer: "1" },
+      { q: "0.5 比 0.8 大。", type: "tf", answer: "false" },
+      { q: "把 1 元平均分成 10 份，每份是多少？", type: "mc", options: ["0.1 元", "1 元"], answer: "0.1 元" },
+      { q: "一個圓有幾個半徑？", type: "mc", options: ["很多條", "一條"], answer: "很多條" },
+      { q: "圓規的用途是什麼？", type: "mc", options: ["畫圓", "量長度"], answer: "畫圓" },
+      { q: "12 是 4 的幾倍？", type: "mc", options: ["2", "3"], answer: "3" },
+      { q: "36 除以 6 等於？", type: "mc", options: ["5", "6"], answer: "6" },
+      { q: "6 × 7 =？", type: "mc", options: ["42", "36"], answer: "42" },
+      { q: "一個鐘面，時針從 3 走到 9，經過幾小時？", type: "mc", options: ["6", "9"], answer: "6" },
+      { q: "1 小時是幾分鐘？", type: "mc", options: ["60", "100"], answer: "60" },
+      { q: "看柱狀圖可比較各項的數量。", type: "tf", answer: "true" },
+      { q: "統計圖表不能用來找出最多人選的項目。", type: "tf", answer: "false" },
+      { q: "0.2 加 0.3 等於多少？", type: "mc", options: ["0.4", "0.5"], answer: "0.5" },
+      { q: "把 1 塊錢平均分成 2 份，每份是？", type: "mc", options: ["0.2", "0.5"], answer: "0.5" },
+      { q: "圓形沒有直角。", type: "tf", answer: "true" },
+      { q: "半徑乘以 2 是直徑。", type: "tf", answer: "true" },
+      { q: "42 ÷ 7 =", type: "mc", options: ["7", "6"], answer: "6" },
+      { q: "64 ÷ 8 =", type: "mc", options: ["6", "8"], answer: "8" },
+      { q: "8 × 9 =", type: "mc", options: ["72", "81"], answer: "72" },
+      { q: "下午 4 點再過 2 小時是幾點？", type: "mc", options: ["6 點", "5 點"], answer: "6 點" },
+      { q: "24 小時是一整天的時間。", type: "tf", answer: "true" },
+      { q: "統計圖中，最高的長條代表最多的人數。", type: "tf", answer: "true" },
+      { q: "0.4 減 0.2 等於多少？", type: "mc", options: ["0.3", "0.2"], answer: "0.2" },
+      { q: "0.7 + 0.2 =", type: "mc", options: ["0.8", "0.9"], answer: "0.9" },
+      { q: "一個圓的直徑是 10 公分，半徑是？", type: "mc", options: ["5 公分", "10 公分"], answer: "5 公分" },
+      { q: "圓規是畫圓的工具。", type: "tf", answer: "true" },
+      { q: "35 ÷ 5 =", type: "mc", options: ["6", "7"], answer: "7" },
+      { q: "36 ÷ 4 =", type: "mc", options: ["9", "6"], answer: "9" },
+      { q: "6 × 8 =", type: "mc", options: ["48", "56"], answer: "48" },
+      { q: "下午 1 點再加 4 小時是幾點？", type: "mc", options: ["5 點", "6 點"], answer: "5 點" },
+      { q: "0.6 是比 0.3 大的數。", type: "tf", answer: "true" },
+      { q: "0.1 是一角錢。", type: "tf", answer: "true" },
+      { q: "圓心是圓的中心。", type: "tf", answer: "true" },
       { q: "36 ÷ 6 =", type: "mc", options: ["5", "6"], answer: "6" },
-      { q: "晚上9點再過4小時是幾點？", type: "mc", options: ["1點", "12點"], answer: "1點" },
-      { q: "上午10點到下午3點經過幾小時？", type: "mc", options: ["4", "5"], answer: "5" },
-      { q: "統計圖可幫助我們了解資料的變化。", type: "tf", answer: "true" },
-      { q: "長條圖只能用來畫顏色。", type: "tf", answer: "false" },
-      { q: "0.25大於0.5。", type: "tf", answer: "false" },
-      { q: "0.7加0.3等於1。", type: "tf", answer: "true" },
-      { q: "圓形有幾條直徑？", type: "mc", options: ["無數條", "2條"], answer: "無數條" },
-      { q: "圓形的邊是直線。", type: "tf", answer: "false" },
-      { q: "4 × 7 =", type: "mc", options: ["28", "21"], answer: "28" },
-      { q: "5 × 6 =", type: "mc", options: ["35", "30"], answer: "30" },
-      { q: "12 ÷ 3 =", type: "mc", options: ["4", "6"], answer: "4" },
-      { q: "15 ÷ 5 =", type: "mc", options: ["3", "5"], answer: "3" },
-      { q: "一天有多少小時？", type: "mc", options: ["24", "12"], answer: "24" },
-      { q: "1小時有幾分鐘？", type: "mc", options: ["60", "100"], answer: "60" },
-      { q: "可以從統計表中看出最高數值。", type: "tf", answer: "true" },
-      { q: "可以用表格整理同學最愛的水果。", type: "tf", answer: "true" },
-      { q: "0.1 + 0.2 =", type: "mc", options: ["0.3", "0.4"], answer: "0.3" },
-      { q: "1元=幾角？", type: "mc", options: ["10角", "100角"], answer: "10角" },
-      { q: "圓周總是比直徑長。", type: "tf", answer: "true" },
-      { q: "圓心是圓形的邊緣。", type: "tf", answer: "false" },
-      { q: "36 ÷ 4 =", type: "mc", options: ["9", "8"], answer: "9" },
-      { q: "9 × 6 =", type: "mc", options: ["54", "63"], answer: "54" },
-      { q: "8:00到10:30經過幾小時幾分？", type: "mc", options: ["2小時30分", "2小時"], answer: "2小時30分" },
-      { q: "30分鐘等於半小時。", type: "tf", answer: "true" },
-      { q: "圓規可以畫出圓形。", type: "tf", answer: "true" },
-      { q: "直徑比半徑長。", type: "tf", answer: "true" },
-      { q: "0.9比1.1小。", type: "tf", answer: "true" },
-      { q: "0.3 + 0.4 =", type: "mc", options: ["0.7", "0.6"], answer: "0.7" },
-      { q: "1元是100分。", type: "tf", answer: "true" },
-      { q: "圓形可以有很多半徑。", type: "tf", answer: "true" },
-      { q: "10 ÷ 2 =", type: "mc", options: ["4", "5"], answer: "5" },
-      { q: "3 × 9 =", type: "mc", options: ["27", "21"], answer: "27" },
-      { q: "半徑乘以2等於直徑。", type: "tf", answer: "true" },
-      { q: "統計圖不能比較數量。", type: "tf", answer: "false" },
-      { q: "時針走一圈是幾小時？", type: "mc", options: ["12小時", "24小時"], answer: "12小時" },
-      { q: "下午3點再加2小時是幾點？", type: "mc", options: ["5點", "4點"], answer: "5點" },
-      { q: "5 × 5 =", type: "mc", options: ["25", "20"], answer: "25" },
-      { q: "小數可表示比1小的數。", type: "tf", answer: "true" },
-      { q: "9 ÷ 3 =", type: "mc", options: ["2", "3"], answer: "3" },
-      { q: "圓形是多邊形嗎？", type: "tf", answer: "false" },
-      { q: "0.2 + 0.3 =", type: "mc", options: ["0.4", "0.5"], answer: "0.5" },
-      { q: "24 ÷ 4 =", type: "mc", options: ["6", "8"], answer: "6" }
+      { q: "49 ÷ 7 =", type: "mc", options: ["7", "8"], answer: "7" },
+      { q: "7 × 7 =", type: "mc", options: ["49", "56"], answer: "49" },
+      { q: "晚上 10 點再過 3 小時是幾點？", type: "mc", options: ["1 點", "12 點"], answer: "1 點" },
+      { q: "60 分鐘等於 1 小時。", type: "tf", answer: "true" },
+      { q: "統計圖可以幫助我們看出誰最受歡迎。", type: "tf", answer: "true" },
+      { q: "0.9 - 0.4 =", type: "mc", options: ["0.5", "0.4"], answer: "0.5" },
+      { q: "0.5 × 2 =", type: "mc", options: ["1", "0.1"], answer: "1" },
+      { q: "一個圓有一個圓心。", type: "tf", answer: "true" },
+      { q: "30 ÷ 6 =", type: "mc", options: ["6", "5"], answer: "5" },
+      { q: "48 ÷ 8 =", type: "mc", options: ["6", "7"], answer: "6" },
+      { q: "7 × 8 =", type: "mc", options: ["56", "63"], answer: "56" },
+      { q: "上午 9 點到 11 點經過幾小時？", type: "mc", options: ["2", "3"], answer: "2" },
+      { q: "表格不能比較數量。", type: "tf", answer: "false" }
     ];
 
-    const container = document.getElementById("quiz-container");
+    const form = document.getElementById("quiz-form");
 
     questions.forEach((item, index) => {
       const div = document.createElement("div");
       div.className = "question";
-      div.id = `q${index}`;
-
       let html = `<p>${index + 1}. ${item.q}</p>`;
       if (item.type === "mc") {
         item.options.forEach(opt => {
-          html += `<input type="radio" name="q${index}" value="${opt}"> ${opt}<br>`;
+          html += `<label><input type="radio" name="q${index}" value="${opt}"> ${opt}</label><br>`;
         });
-      } else if (item.type === "tf") {
-        html += `<input type="radio" name="q${index}" value="true"> 對<br>`;
-        html += `<input type="radio" name="q${index}" value="false"> 錯<br>`;
+      } else {
+        html += `<label><input type="radio" name="q${index}" value="true"> 對</label><br>`;
+        html += `<label><input type="radio" name="q${index}" value="false"> 錯</label><br>`;
       }
-      html += `<br><button onclick="checkAnswer('q${index}', '${item.answer}')">提交</button>`;
-      html += `<p id="result-q${index}"></p>`;
-
       div.innerHTML = html;
-      container.appendChild(div);
+      form.appendChild(div);
     });
 
-    function checkAnswer(questionId, correctAnswer) {
-      const radios = document.getElementsByName(questionId);
-      let selected = null;
-      for (const radio of radios) {
-        if (radio.checked) {
-          selected = radio.value;
-          break;
+    function gradeQuiz() {
+      let correct = 0;
+      let total = questions.length;
+      questions.forEach((item, index) => {
+        const radios = document.getElementsByName("q" + index);
+        let selected = null;
+        for (const radio of radios) {
+          if (radio.checked) {
+            selected = radio.value;
+            break;
+          }
         }
-      }
-      const result = document.getElementById(`result-${questionId}`);
-      if (!selected) {
-        result.textContent = "請選擇一個答案。";
-        result.className = "incorrect";
-      } else if (selected === correctAnswer) {
-        result.textContent = "答對了！👍";
-        result.className = "correct";
-      } else {
-        result.textContent = "答錯了，再試試看～";
-        result.className = "incorrect";
-      }
+        if (selected === item.answer) {
+          correct++;
+        }
+      });
+      const score = document.getElementById("score");
+      score.textContent = `您總共答對 ${correct} 題，正確率為 ${(correct / total * 100).toFixed(1)}%。`;
     }
   </script>
 </body>
