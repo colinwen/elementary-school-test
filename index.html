@@ -2,28 +2,34 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>三年級國語小測驗</title>
+  <title>三年級下學期數學小測驗（康軒第5～9課）</title>
   <style>
     body {
       font-family: "Microsoft JhengHei", sans-serif;
-      background-color: #f0f8ff;
+      background-color: #f2fbff;
       padding: 20px;
-      line-height: 1.6;
     }
     h1 {
       color: #2c3e50;
     }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
     .question {
       margin-bottom: 20px;
       padding: 15px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      background: #f9f9f9;
+      border-left: 5px solid #3498db;
+      border-radius: 5px;
     }
     button {
       margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
+      padding: 8px 16px;
+      background-color: #3498db;
       color: white;
       border: none;
       border-radius: 5px;
@@ -40,52 +46,30 @@
   </style>
 </head>
 <body>
-  <h1>三年級國語小測驗</h1>
+  <h1>康軒三年級下學期 數學小測驗（第5課～第9課）</h1>
 
-  <div class="question" id="q1">
-    <p>1. 「小明每天____學校上學。」</p>
-    <input type="radio" name="q1" value="a"> a. 跑步<br>
-    <input type="radio" name="q1" value="b"> b. 坐船<br>
-    <input type="radio" name="q1" value="c"> c. 飛機<br>
-    <br>
-    <button onclick="checkAnswer('q1', 'a')">提交</button>
-    <p id="result-q1"></p>
-  </div>
-
-  <div class="question" id="q2">
-    <p>2. 「我喜歡閱讀____的書。」</p>
-    <input type="radio" name="q2" value="a"> a. 有趣<br>
-    <input type="radio" name="q2" value="b"> b. 難過<br>
-    <input type="radio" name="q2" value="c"> c. 不見<br>
-    <br>
-    <button onclick="checkAnswer('q2', 'a')">提交</button>
-    <p id="result-q2"></p>
-  </div>
+  <!-- Questions will be inserted here -->
+  <div id="quiz-container"></div>
 
   <script>
-    function checkAnswer(questionId, correctAnswer) {
-      const radios = document.getElementsByName(questionId);
-      let selected = null;
-      for (const radio of radios) {
-        if (radio.checked) {
-          selected = radio.value;
-          break;
-        }
-      }
-
-      const result = document.getElementById(`result-${questionId}`);
-      if (!selected) {
-        result.textContent = "請選擇一個答案。";
-        result.className = "incorrect";
-      } else if (selected === correctAnswer) {
-        result.textContent = "答對了！👍";
-        result.className = "correct";
-      } else {
-        result.textContent = "答錯了，再試試看～";
-        result.className = "incorrect";
-      }
-    }
-  </script>
-</body>
-</html>
-
+    const questions = [
+      { text: "5課：0.5 等於 1/2。", type: "tf", answer: true },
+      { text: "5課：0.8 比 0.5 小。", type: "tf", answer: false },
+      { text: "5課：0.2 + 0.3 = ?", type: "mc", choices: ["0.4", "0.5"], answer: "0.5" },
+      { text: "5課：哪一個數較大？", type: "mc", choices: ["0.7", "0.3"], answer: "0.7" },
+      { text: "5課：0.9 減 0.4 等於？", type: "mc", choices: ["0.3", "0.5"], answer: "0.5" },
+      { text: "6課：圓的周長有固定長度。", type: "tf", answer: true },
+      { text: "6課：直徑是圓上一段彎曲的線。", type: "tf", answer: false },
+      { text: "6課：圓規可以畫圓。", type: "tf", answer: true },
+      { text: "6課：一個圓有幾條半徑？", type: "mc", choices: ["1條", "無數條"], answer: "無數條" },
+      { text: "6課：圓心在圓的哪裡？", type: "mc", choices: ["中心", "邊上"], answer: "中心" },
+      { text: "7課：4 × 3 = 12。", type: "tf", answer: true },
+      { text: "7課：24 ÷ 6 = 3。", type: "tf", answer: false },
+      { text: "7課：哪個式子是 6 的倍數？", type: "mc", choices: ["6 × 4", "5 × 3"], answer: "6 × 4" },
+      { text: "7課：30 ÷ 5 = ?", type: "mc", choices: ["5", "6"], answer: "6" },
+      { text: "7課：8 × 7 = ?", type: "mc", choices: ["54", "56"], answer: "56" },
+      { text: "8課：一天有 24 小時。", type: "tf", answer: true },
+      { text: "8課：1小時等於 30 分鐘。", type: "tf", answer: false },
+      { text: "8課：下午3點是幾時？", type: "mc", choices: ["15:00", "3:00"], answer: "15:00" },
+      { text: "8課：30分鐘 = 幾小時？", type: "mc", choices: ["1/2 小時", "1 小時"], answer: "1/2 小時" },
+      { text: "8課：12點是中午嗎？", type: "mc", choices: ["是", "不是"], answer: "是" },
